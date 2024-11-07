@@ -1,5 +1,5 @@
 ---
-title: 使用vite编译本地库包
+title: 使用 vite 编译本地库包
 date: 2023-11-14
 tags:
   - vite
@@ -11,7 +11,7 @@ tags:
 npm create wgbx@latest --no-cache
 ```
 
-## 开启vite库模式
+## 开启 vite 库模式
 
 文档详见：[https://cn.vitejs.dev/guide/build.html#library-mode](https://cn.vitejs.dev/guide/build.html#library-mode)
 
@@ -58,11 +58,11 @@ import MyLib from './index.vue'
 export default MyLib
 ```
 
-## 打包输出lib库
+## 打包输出 lib 库
 
-执行编译命令，根据上面的配置文件会在根目录生成一个lib文件夹，里面包含了UMD、ESM规范打包的几个js库文件，还有css样式文件，整个组件库文件最终都会输出在dist文件夹下
+执行编译命令，根据上面的配置文件会在根目录生成一个 lib 文件夹，里面包含了 UMD、ESM 规范打包的几个 js 库文件，还有 css 样式文件，整个组件库文件最终都会输出在 dist 文件夹下
 
-## 上传到npm官网
+## 上传到 npm 官网
 
 ### package.json
 
@@ -84,7 +84,7 @@ export default MyLib
 }
 ```
 
-当然上传库到npm官网不能把所有文件都上传，所以还需要在根目录添加一个.npmignore文件，其作用是忽略不需要上传的文件内容，内容如下：
+当然上传库到 npm 官网不能把所有文件都上传，所以还需要在根目录添加一个。npmignore 文件，其作用是忽略不需要上传的文件内容，内容如下：
 
 ```json
 .vscode
@@ -96,7 +96,7 @@ vite.config.js
 
 ## 测试流程
 
-在项目中新建 playground 文件夹，将App.vue直接替换为如下内容
+在项目中新建 playground 文件夹，将 App.vue 直接替换为如下内容
 
 ```vue
 <script setup>

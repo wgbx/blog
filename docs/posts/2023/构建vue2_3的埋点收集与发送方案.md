@@ -1,5 +1,5 @@
 ---
-title: 构建vue2/3的埋点收集与发送方案
+title: 构建 vue2/3 的埋点收集与发送方案
 date: 2023-12-7
 tags:
   - JavaScript
@@ -7,13 +7,13 @@ tags:
 
 ## 埋点是什么
 
-埋点又称为事件追踪（Event Tracking），指的是针对用户行为或事件进行捕获、处理和发送的相关技术及其实施过程。用大白话说：就是通过技术手段“监听”用户在APP、网站内的行为
+埋点又称为事件追踪（Event Tracking），指的是针对用户行为或事件进行捕获、处理和发送的相关技术及其实施过程。用大白话说：就是通过技术手段“监听”用户在 APP、网站内的行为
 
 ## 埋点的作用
 
 如果我们想要收集用户行为数据，就可以通过埋点来实现
 
-- 比如想要了解一个用户在APP里面点击了哪些按钮，看了哪些页面，做了哪些事情等
+- 比如想要了解一个用户在 APP 里面点击了哪些按钮，看了哪些页面，做了哪些事情等
 - 再比如想要了解有多少人用过某些功能，使用的频率次数等
 
 前端埋点和监控的出现，可以帮助开发者和产品运营人员，收集用户的行为数据，分析用户的行为习惯，实时监控应用的性能，发现和解决问题，处理系统故障。通过实施有效的埋点和监控策略，不断地进行产品优化，提出更好的营销策略，以提升用户体验和产品价值
@@ -49,8 +49,8 @@ async function getBaseInfo() {
 ```
 
 - ips：通过公共方法获取
-- fp：通过@fingerprintjs/fingerprintjs获取
-- uuid：通过uuid获取
+- fp：通过 @fingerprintjs/fingerprintjs 获取
+- uuid：通过 uuid 获取
 
 ### 获取设备信息
 
@@ -149,10 +149,10 @@ export function initRouter() {
 }
 ```
 
-- vue2/3的路由跳转底层实现不一致，vue2push使用pushState，所以需要在vue2版本路由跳转监听pushState的改动
-- 由于visibilitychange，pagehide是拿不到页面跳转信息的，需要和popstate，hashchange
+- vue2/3 的路由跳转底层实现不一致，vue2push 使用 pushState，所以需要在 vue2 版本路由跳转监听 pushState 的改动
+- 由于 visibilitychange，pagehide 是拿不到页面跳转信息的，需要和 popstate，hashchange
 - 事件触发向收集器推送数据，由收集器统一来管理发送操作
-- 绑定window对象记录用户页面进入时间获取用户页面停留时间
+- 绑定 window 对象记录用户页面进入时间获取用户页面停留时间
 
 ### 数据储存器
 
@@ -214,8 +214,8 @@ class StoreData {
 export const storeData: StoreData = StoreData.getInstance()
 ```
 
-- 通过单例模式保证整个项目只有一个StoreData储存器
-- 整个tracing设计成栈结构，添加一个埋点入栈，发送数据后进行出栈清空操作
+- 通过单例模式保证整个项目只有一个 StoreData 储存器
+- 整个 tracing 设计成栈结构，添加一个埋点入栈，发送数据后进行出栈清空操作
 
 ### 发射器
 
@@ -263,5 +263,5 @@ export const sendData = debounce(() => {
 }, 2000)
 ```
 
-- 智能设计当前可发送的方式，默认为1，通过api兼容性查询，发送大小匹配方式2，3
-- 设计nextIdle方法为浏览器空闲时发送，发送完时间清空数据中心
+- 智能设计当前可发送的方式，默认为 1，通过 api 兼容性查询，发送大小匹配方式 2，3
+- 设计 nextIdle 方法为浏览器空闲时发送，发送完时间清空数据中心

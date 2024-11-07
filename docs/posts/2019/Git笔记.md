@@ -1,22 +1,23 @@
 ---
-title: Git笔记
+title: Git 笔记
 date: 2019-08-12 15:54:03
 tags:
   - Git
+  - docs
 ---
 
-Git是分布式版本控制系统，在Git中，所有版本数据全部存放在本地，Git的版本库格式是.git文件
+Git 是分布式版本控制系统，在 Git 中，所有版本数据全部存放在本地，Git 的版本库格式是。git 文件
 
-## Git命令
+## Git 命令
 
-### Git配置
+### Git 配置
 
 ```bash
 $ git config --global user.name "Your Name"
 $ git config --global user.email "email@example.com"
 ```
 
-`git config`命令的`--global`参数，表明这台机器上的所有Git仓库都会使用这个配置，也可以对某个仓库指定不同的用户名和邮箱地址。
+`git config`命令的`--global`参数，表明这台机器上的所有 Git 仓库都会使用这个配置，也可以对某个仓库指定不同的用户名和邮箱地址。
 
 ### 拉取远程代码
 
@@ -30,13 +31,13 @@ $ git clone <url> <new-name>
 
 ### 创建版本库
 
-#### 初始化一个Git仓库
+#### 初始化一个 Git 仓库
 
 ```bash
 $ git init
 ```
 
-#### 添加文件到Git仓库
+#### 添加文件到 Git 仓库
 
 包括两步：
 
@@ -82,9 +83,9 @@ $ git diff --staged
 $ git diff HEAD -- <file>
 ```
 
-- `git diff` 可以查看工作区(work dict)和暂存区(stage)的区别
-- `git diff --cached` 可以查看暂存区(stage)和分支(master)的区别
-- `git diff --staged` 同上，是git高版本才能支持的指令
+- `git diff` 可以查看工作区 (work dict) 和暂存区 (stage) 的区别
+- `git diff --cached` 可以查看暂存区 (stage) 和分支 (master) 的区别
+- `git diff --staged` 同上，是 git 高版本才能支持的指令
 - `git diff HEAD -- <file>` 可以查看工作区和版本库里面最新版本的区别
 
 ### 查看提交日志
@@ -121,7 +122,7 @@ $ git reflog
 $ git reset --hard HEAD^
 ```
 
-以上命令是返回上一个版本，在Git中，用`HEAD`表示当前版本，上一个版本就是`HEAD^`，上上一个版本是`HEAD^^`，往上100个版本写成`HEAD~100`。
+以上命令是返回上一个版本，在 Git 中，用`HEAD`表示当前版本，上一个版本就是`HEAD^`，上上一个版本是`HEAD^^`，往上 100 个版本写成`HEAD~100`。
 
 ### 回退指定版本号
 
@@ -129,13 +130,13 @@ $ git reset --hard HEAD^
 $ git reset --hard <commit-id>
 ```
 
-commit-id是版本号，是一个用SHA1计算出的序列
+commit-id 是版本号，是一个用 SHA1 计算出的序列
 
 ### 工作区、暂存区和版本库
 
 工作区：在电脑里能看到的目录；
-版本库：在工作区有一个隐藏目录`.git`，是Git的版本库。
-Git的版本库中存了很多东西，其中最重要的就是称为stage（或者称为index）的暂存区，还有Git自动创建的`master`，以及指向`master`的指针`HEAD`。
+版本库：在工作区有一个隐藏目录`.git`，是 Git 的版本库。
+Git 的版本库中存了很多东西，其中最重要的就是称为 stage（或者称为 index）的暂存区，还有 Git 自动创建的`master`，以及指向`master`的指针`HEAD`。
 
 ![理解](https://gitee.com/wgbx/resources/raw/master/blog/git/0.jpg)
 
@@ -154,15 +155,15 @@ $ git checkout -- <file>
 
 该命令是指将文件在工作区的修改全部撤销，这里有两种情况：
 
-1. 一种是file自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
-2. 一种是file已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+1. 一种是 file 自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+2. 一种是 file 已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
 
-总之，就是让这个文件回到最近一次git commit或git add时的状态。
+总之，就是让这个文件回到最近一次 git commit 或 git add 时的状态。
 
 #### 丢弃暂存区的修改
 
 分两步：
-第一步，把暂存区的修改撤销掉(unstage)，重新放回工作区：
+第一步，把暂存区的修改撤销掉 (unstage)，重新放回工作区：
 
 ```bash
 $ git reset HEAD <file>
@@ -198,7 +199,7 @@ $ git add <file>
 
 Q：比如执行了`rm text.txt` 误删了怎么恢复？
 A：执行`git checkout -- text.txt` 把版本库的东西重新写回工作区就行了
-Q：如果执行了`git rm text.txt`我们会发现工作区的text.txt也删除了，怎么恢复？
+Q：如果执行了`git rm text.txt`我们会发现工作区的 text.txt 也删除了，怎么恢复？
 A：先撤销暂存区修改，重新放回工作区，然后再从版本库写回到工作区
 
 ```bash
@@ -211,7 +212,7 @@ A：执行`git commit -m "delete text.txt"`，提交后最新的版本库将不�
 
 ### 远程仓库
 
-#### 创建SSH Key
+#### 创建 SSH Key
 
 ```bash
 $ ssh-keygen -t rsa -C "youremail@example.com"
@@ -244,10 +245,10 @@ $ git revert HEAD
 $ git revert git revert <commit-id>
 ```
 
-- 撤销某次操作，此次操作之前和之后的commit和history都会保留，并且把这次撤销作为一次最新的提交。
-- 会打开vim编辑器，请学习相关知识
+- 撤销某次操作，此次操作之前和之后的 commit 和 history 都会保留，并且把这次撤销作为一次最新的提交。
+- 会打开 vim 编辑器，请学习相关知识
 
-### 修改上一次提交的commit信息
+### 修改上一次提交的 commit 信息
 
 ```bash
 $ git commit --amend -m "description"
@@ -256,16 +257,16 @@ $ git commit --amend -m "description"
 - 可以直接修改上一次的提交信息
 - 也可以`git add <file>`再与上一次的修改提交信息合并提交
 
-### 合并多个commit为一个完整commit
+### 合并多个 commit 为一个完整 commit
 
 ```bash
 $ git rebase -i  [startpoint]  [endpoint]
 ```
 
-- 重新修改commit会有二次修改commit备注信息，需记得修改
-- 即弹出交互式的界面让用户编辑完成合并操作，[startpoint] [endpoint]则指定了一个编辑区间
-  如果不指定[endpoint]，则该区间的终点默认是当前分支HEAD所指向的commit(注：该区间指定的是一个前开后闭的区间)。
-- 在查看到了log日志后，我们运行以下命令：`git rebase -i 36224db`或`git rebase -i HEAD~3 `
+- 重新修改 commit 会有二次修改 commit 备注信息，需记得修改
+- 即弹出交互式的界面让用户编辑完成合并操作，[startpoint] [endpoint] 则指定了一个编辑区间
+  如果不指定 [endpoint]，则该区间的终点默认是当前分支 HEAD 所指向的 commit（注：该区间指定的是一个前开后闭的区间）。
+- 在查看到了 log 日志后，我们运行以下命令：`git rebase -i 36224db`或`git rebase -i HEAD~3 `
 
 ### 选择一部分提交的代码合并到另一个分支
 
@@ -274,9 +275,9 @@ $ git cherry-pick <commit-id]
 ```
 
 - 开闭区间
-- 单个commit只需要`git cherry-pick <commit-id>`
-- 多个commit需要`git cherry-pick <commit-id> <commit-id>`
-- 多个commit需要`git cherry-pick <commit-id>..[commit-id]`
+- 单个 commit 只需要`git cherry-pick <commit-id>`
+- 多个 commit 需要`git cherry-pick <commit-id> <commit-id>`
+- 多个 commit 需要`git cherry-pick <commit-id>..[commit-id]`
 
 ### 分支
 
@@ -292,7 +293,7 @@ $ git branch <branch-name>
 $ git branch
 ```
 
-`git branch`命令会列出所有分支，当前分支前面会标一个\*号。
+`git branch`命令会列出所有分支，当前分支前面会标一个、*号。
 
 #### 切换分支
 
@@ -300,7 +301,7 @@ $ git branch
 $ git checkout <branch-name>
 ```
 
-#### 创建+切换分支
+#### 创建 + 切换分支
 
 ```bash
 $ git checkout -b <branch-name>
@@ -318,7 +319,7 @@ $ git merge <branch-name>
 $ git merge --no-ff -m "description" <branch-name>
 ```
 
-因为本次合并要创建一个新的commit，所以加上`-m`参数，把commit描述写进去。合并分支时，加上`--no-ff`参数就可以用普通模式合并，能看出来曾经做过合并，包含作者和时间戳等信息，而fast forward合并就看不出来曾经做过合并。
+因为本次合并要创建一个新的 commit，所以加上`-m`参数，把 commit 描述写进去。合并分支时，加上`--no-ff`参数就可以用普通模式合并，能看出来曾经做过合并，包含作者和时间戳等信息，而 fast forward 合并就看不出来曾经做过合并。
 
 #### 删除分支
 
@@ -332,7 +333,7 @@ $ git branch -d <branch-name>
 $ git log --graph
 ```
 
-当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。用`git log --graph`命令可以看到分支合并图。
+当 Git 无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。用`git log --graph`命令可以看到分支合并图。
 
 #### 获取远程分支并创建切换本地分支
 
@@ -358,7 +359,7 @@ $ git stash
 $ git stash list
 ```
 
-- 显示保存进度的列表。也就意味着，git stash命令可以多次执行
+- 显示保存进度的列表。也就意味着，git stash 命令可以多次执行
 
 #### 恢复工作现场
 
@@ -367,7 +368,7 @@ $ git stash pop
 ```
 
 - `git stash pop`
-- 恢复最新的进度到工作区，git默认会把工作区和暂存区的改动都恢复到工作区
+- 恢复最新的进度到工作区，git 默认会把工作区和暂存区的改动都恢复到工作区
 - `git stash pop --index`
 - 恢复最新的进度到工作区和暂存区（尝试将原来暂存区的改动还恢复到暂存区）
 - `git stash pop stash@{1}`
@@ -420,7 +421,7 @@ $ git checkout -b branch-name origin/branch-name，
 $ git push origin branch-name
 ```
 
-如果推送失败，先用git pull抓取远程的新提交
+如果推送失败，先用 git pull 抓取远程的新提交
 
 #### 远程分支与本地分支合并
 
@@ -428,11 +429,11 @@ $ git push origin branch-name
 $ git pull origin <remote-barnch-name>:<local-barnch-name>
 ```
 
-- origin指的是远程主机名
+- origin 指的是远程主机名
 - 如果有冲突，要先处理冲突
 - 在默认模式下，`git pull`是`git fetch`后跟`git merge FETCH_HEAD`的缩写
-- 如果远程分支要与当前分支合并，则冒号后面的部分可以省略,即`git pull origin <remote-barnch-name>`
-- 如果当前分支与远程分支存在追踪关系，就可以省略远程分支名,即`git pull origin`
+- 如果远程分支要与当前分支合并，则冒号后面的部分可以省略，即`git pull origin <remote-barnch-name>`
+- 如果当前分支与远程分支存在追踪关系，就可以省略远程分支名，即`git pull origin`
 - 如果当前分支只有一个追踪分支，连远程主机名都可以省略，即`git pull`
 
 #### 建立本地分支和远程分支的关联
@@ -441,11 +442,11 @@ $ git pull origin <remote-barnch-name>:<local-barnch-name>
 $ git branch --set-upstream <local-barnch-name> origin/<remote-barnch-name>
 ```
 
-在某些场合，Git会自动在本地分支与远程分支之间，建立一种追踪关系(tracking)。比如，在git clone的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系，也就是说，本地的master分支自动”追踪”origin/master分支。
+在某些场合，Git 会自动在本地分支与远程分支之间，建立一种追踪关系 (tracking)。比如，在 git clone 的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系，也就是说，本地的 master 分支自动”追踪”origin/master 分支。
 
 ### 标签
 
-tag就是一个让人容易记住的有意义的名字，它跟某个commit绑在一起。
+tag 就是一个让人容易记住的有意义的名字，它跟某个 commit 绑在一起。
 
 #### 新建一个标签
 
@@ -453,7 +454,7 @@ tag就是一个让人容易记住的有意义的名字，它跟某个commit绑�
 $ git tag <tagname>
 ```
 
-命令`git tag <tagname>`用于新建一个标签，默认为HEAD，也可以指定一个commit id。
+命令`git tag <tagname>`用于新建一个标签，默认为 HEAD，也可以指定一个 commit id。
 
 #### 指定标签信息
 
@@ -463,13 +464,13 @@ $ git tag -a <tagname> -m <description> <branchname> or commit_id
 
 `git tag -a <tagname> -m "blablabla..."`可以指定标签信息。
 
-#### PGP签名标签
+#### PGP 签名标签
 
 ```bash
 $ git tag -s <tagname> -m <description> <branchname> or commit_id
 ```
 
-`git tag -s <tagname> -m "blablabla..."`可以用PGP签名标签。
+`git tag -s <tagname> -m "blablabla..."`可以用 PGP 签名标签。
 
 #### 查看所有标签
 
@@ -503,7 +504,7 @@ $ git push origin :refs/tags/<tagname>
 
 ### 缩写配置
 
-- 在桌面同级目录下的.gitconfig中配置该缩写命令
+- 在桌面同级目录下的。gitconfig 中配置该缩写命令
 
 ```bash
 [alias]

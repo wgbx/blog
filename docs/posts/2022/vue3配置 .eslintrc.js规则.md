@@ -1,5 +1,5 @@
 ---
-title: vue3配置 .eslintrc.js规则
+title: vue3 配置 .eslintrc.js 规则
 date: 2022-05-16
 tags:
   - eslint
@@ -52,14 +52,14 @@ module.exports = {
 
 ### 规则集介绍
 
-上述配置文件启用了以下的eslint规则集和插件：
+上述配置文件启用了以下的 eslint 规则集和插件：
 
-1. eslint:recommended：通过eslint官方提供的最佳实践规则，检验代码语法，确保代码质量
+1. eslint:recommended：通过 eslint 官方提供的最佳实践规则，检验代码语法，确保代码质量
 2. plugin:vue/essential：根据 Vue.js 的最佳实践规则验证 Vue.js 应用程序的组件写法
 3. @vue/prettier： 用于将 ESLint 规则与 Prettier 格式化工具的规则相互补充，以兼容两者的冲突
 4. @vue/typescript：VueJS 官方提供的 typescript 配置，检查 Vue 和 TypeScript 项目的语法规范
 5. @typescript-eslint/eslint-plugin：TypeScript 相关的规则
-6. vue：Vue.js 的eslint规则
-7. @typescript-eslint：TypeScript 相关的eslint规则
-8. eslint-config-prettier：关闭与Prettier冲突的ESLint规则
-9. eslint-plugin-prettier：使用Prettier实现ESLint规则
+6. vue：Vue.js 的 eslint 规则
+7. @typescript-eslint：TypeScript 相关的 eslint 规则
+8. eslint-config-prettier：关闭与 Prettier 冲突的 ESLint 规则
+9. eslint-plugin-prettier：使用 Prettier 实现 ESLint 规则

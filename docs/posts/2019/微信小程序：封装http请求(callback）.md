@@ -1,18 +1,19 @@
 ---
-title: 微信小程序：封装http请求(callback）
+title: 微信小程序：封装 http 请求 (callback）
 date: 2019-06-12 15:54:03
 tags:
   - 微信小程序
 ---
 
-使用 callback思路封装小程序请求
+使用 callback 思路封装小程序请求
 
 <!--more-->
+
 <hr/>
 
 ## config.js
 
-一般来说，所有项目都需要建立一个config.js来储存项目的一些基本信息，如公钥私钥或是环境参数
+一般来说，所有项目都需要建立一个 config.js 来储存项目的一些基本信息，如公钥私钥或是环境参数
 
 ```js
 const config = {
@@ -21,9 +22,9 @@ const config = {
 export { config }
 ```
 
-## http封装
+## http 封装
 
-- 创建http.js文件，定义HTTP类
+- 创建 http.js 文件，定义 HTTP 类
 - 定义公用请求方法
 - 导出当前类
 
@@ -65,7 +66,7 @@ class HTTP {
 export { HTTP }
 ```
 
-## Api封装
+## Api 封装
 
 ```js
 import { HTTP } from '../util/http'

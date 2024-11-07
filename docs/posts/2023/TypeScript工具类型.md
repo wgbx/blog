@@ -2,7 +2,8 @@
 title: TypeScript 工具类型
 date: 2023-01-12
 tags:
-  - JavaScript
+  - TypeScript
+  - docs
 ---
 以下是 TypeScript 中所有的工具类型（Utility Type）列表，按名字字母顺序排列：
 

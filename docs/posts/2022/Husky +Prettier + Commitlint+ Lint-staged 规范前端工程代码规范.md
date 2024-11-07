@@ -7,15 +7,15 @@ tags:
 
 ### 前言
 
-在实际开发中常常会遇到同事之间协作开发，由于编辑器代码格式化的不同以及其他代码规范问题，导致代码之间格式不统一，合并代码时常常非常痛苦，因此急需在项目中配置一套可靠的代码规范工具，但是网上的文章很多配置非常复杂，因此总结了一套非常简单的配置方式，能够快速搭建一套可用模板。 本文主要有两大工具Prettier+Commitlint，配置中穿插Lint-staged 、Husky 、Eslint 等工具的配置
+在实际开发中常常会遇到同事之间协作开发，由于编辑器代码格式化的不同以及其他代码规范问题，导致代码之间格式不统一，合并代码时常常非常痛苦，因此急需在项目中配置一套可靠的代码规范工具，但是网上的文章很多配置非常复杂，因此总结了一套非常简单的配置方式，能够快速搭建一套可用模板。 本文主要有两大工具 Prettier+Commitlint，配置中穿插 Lint-staged 、Husky 、Eslint 等工具的配置
 部分关键工具及文件介绍：
 
 - Prettier：主要用来实现代码提交前的格式化
-- Commitlint：主要用来实现代码commit信息的规范性检测
+- Commitlint：主要用来实现代码 commit 信息的规范性检测
 - Husky：主要是操作 git 钩子的工具
 - Lint-staged ：主要是本地暂存代码检查工具
-- .husky文件中的pre-commit：通过钩子函数判断提交的代码是否符合规范
-- .husky文件中的commit-msg：通过钩子函数判断commit信息是否符合规范
+- .husky 文件中的 pre-commit：通过钩子函数判断提交的代码是否符合规范
+- .husky 文件中的 commit-msg：通过钩子函数判断 commit 信息是否符合规范
 
 ### 安装依赖
 
@@ -74,7 +74,7 @@ module.exports = {
 }
 ```
 
-3. 修改package.json
+3. 修改 package.json
 
 ```javascript
 // 在最外层Json添加以下代码
@@ -88,7 +88,7 @@ module.exports = {
 },
 ```
 
-### 添加husky脚本
+### 添加 husky 脚本
 
 ```javascript
 // 依次输入以下指令
@@ -98,14 +98,14 @@ npx husky add .husky/pre-commit "npx --no -- lint-staged -q"
 npx husky add .husky/commit-msg "npx --no -- commitlint --edit"
 ```
 
-以上，配置完毕就可以在git提交前格式化提交的代码及对提交格式校验
+以上，配置完毕就可以在 git 提交前格式化提交的代码及对提交格式校验
 
 ### 常见问题
 
-1. 可不可以做EsLint校验？
+1. 可不可以做 EsLint 校验？
 
-可以，但不推荐，lint-staged的工作流程是在提交时进行git暂存，然后恢复储藏，在这个过程中，如果进行eslint -- fix，有几率出错，也不推荐任何fix操作，推荐使用编辑器插件或者npx eslint 来解决
+可以，但不推荐，lint-staged 的工作流程是在提交时进行 git 暂存，然后恢复储藏，在这个过程中，如果进行 eslint -- fix，有几率出错，也不推荐任何 fix 操作，推荐使用编辑器插件或者 npx eslint 来解决
 
 2. 通过以上配置出错？
 
-prettier，husky等一些包会对node，vue等版本有要求，如果提示错误，需要具体问题具体分析
+prettier，husky 等一些包会对 node，vue 等版本有要求，如果提示错误，需要具体问题具体分析
