@@ -16,9 +16,9 @@ export default defineConfig({
     },
     outline: false,
     nav: [
-      { text: '🏡博客', link: '/' },
-      { text: '🔖标签', link: '/tags' },
-      { text: '📃文章', link: '/archives' }
+      { text: '🏡 博客', link: '/' },
+      { text: '🔖 标签', link: '/tags' },
+      { text: '📃 文章', link: '/archives' }
     ],
     socialLinks: [{ icon: 'github', link: 'https://github.com/wgbx' }]
   }
