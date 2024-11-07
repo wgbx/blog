@@ -14,9 +14,7 @@ export default defineConfig({
     search: {
       provider: 'local'
     },
-    outline: {
-      label: '大纲'
-    },
+    outline: false,
     nav: [
       { text: '🏡博客', link: '/' },
       { text: '🔖标签', link: '/tags' },
