@@ -293,7 +293,7 @@ $ git branch <branch-name>
 $ git branch
 ```
 
-`git branch`命令会列出所有分支，当前分支前面会标一个、*号。
+`git branch`命令会列出所有分支，当前分支前面会标一个、\*号。
 
 #### 切换分支
 
@@ -443,6 +443,32 @@ $ git branch --set-upstream <local-barnch-name> origin/<remote-barnch-name>
 ```
 
 在某些场合，Git 会自动在本地分支与远程分支之间，建立一种追踪关系 (tracking)。比如，在 git clone 的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系，也就是说，本地的 master 分支自动”追踪”origin/master 分支。
+
+#### 批量删除分支
+
+删除以特定前缀开头的分支
+
+```bash
+$ git branch | grep "feat/" | xargs git branch -D
+```
+
+删除已经在远程被删除的本地分支
+
+```bash
+git fetch -p && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+```
+
+删除除了 master/main 以外的所有本地分支
+
+```bash
+$ git branch | grep -v "master\|main" | xargs git branch -D
+```
+
+删除已经合并到 master/main 的所有本地分支
+
+```bash
+$ git branch --merged master | grep -v "^\*\|master" | xargs git branch -d
+```
 
 ### 标签
 
