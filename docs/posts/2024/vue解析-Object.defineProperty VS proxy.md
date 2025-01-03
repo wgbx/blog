@@ -21,7 +21,7 @@ tags:
 
 在 Vue 的实例初始化阶段，Vue 会遍历 data 中的所有属性，并通过 Object.defineProperty 将这些属性全部转为 getter/setter。这样一来，当数据发生变化时，setter 会被自动调用
 
-```javascript
+```js
 // 假设有一个 Vue 实例
 const vm = new Vue({
   data: {
@@ -79,7 +79,7 @@ Vue3 采用了 ES6 中的 Proxy 来监控数据的变化，所以 Vue3 只支持
 Proxy 是 ES6 中新增的一个特性，它允许你创建一个对象的代理，从而可以拦截并重定义该对象上的基本操作，比如属性查找、赋值、删除等操作。通过 Proxy，你可以自定义对象的行为，实现更灵活和强大的操作
 Proxy 的基本语法如下：
 
-```javascript
+```js
 let proxy = new Proxy(target, handler);
 ```
 
@@ -92,7 +92,7 @@ let proxy = new Proxy(target, handler);
 
 以下是一个简单的示例，演示了如何使用 Proxy 来拦截对象的属性读取和赋值：
 
-```javascript
+```js
 let target = {
   message: 'Hello, Proxy!'
 };
@@ -141,7 +141,7 @@ Proxy 可以直接作用于对象本身，而非像 Object.defineProperty 那样
 
 ### 无响应式
 
-```javascript
+```js
 // 假设我们创建一个简单的数据对象
 const shoeInfo = {
   number: 3,
@@ -167,7 +167,7 @@ console.log('数据变化后的总价：', total); // 输出：30（实际并未
 通过分析，我们第二次打印依旧是 30，虽然我们的 num 发生了变化，但是 total 已经被运算过，所以下一次获取 total 的值依旧是之前的值
 那应该怎么做，才能实时的获取到当前最新的 total，也很简单，我们每次获取之间，手动重新重新计算一次
 
-```javascript
+```js
 // 假设我们创建一个简单的数据对象
 const shoeInfo = {
   number: 3,
@@ -199,7 +199,7 @@ console.log('数据变化后的总价：', total); // 输出：50
 
 通过 Object.defineProperty 来对字段进行代理，通过 set，get 方法，完成逻辑的自动触发
 
-```javascript
+```js
 let number = 3
 const shoeInfo = {
   number: number,
@@ -232,7 +232,7 @@ object.defineProperty 只能监听到指定对象的指定属性的 get set，�
 
 vue3 中改用了 proxy，为什么响应式核心 api 做了修改，proxy 是什么？我们先实现一个类似 vue2 的案例
 
-```
+```js
 const shoeInfo = {
   number: 3,
   price: 10,
@@ -247,7 +247,7 @@ let shoeInfoProxy = new Proxy(shoeInfo, {
     return true
   },
   // target 被代理对象 key 本次读取的值 receiver 代理对象
-  get(tartget, key, receiver) {
+  get(target, key, receiver) {
     console.log('触发了获取事件')
     return shoes[key]
   },
@@ -305,7 +305,7 @@ Reflect 的所有方法都可以像普通函数那样调用，而不必使用 ne
 
 似乎比较难理解，我们举个例子吧
 
-```javascript
+```js
 let obj = {
   num:10
 }
@@ -316,14 +316,14 @@ Reflect.get(obj,'num') // 10
 这么来看，似乎这个 api 很普通啊，反而把简单的读取值写复杂了
 这时候我们就要提一下 Reflect.get 的第三个参数了
 
-```javascript
+```js
 // receiver 如果target对象中指定了propertyKey，receiver则为getter调用时的this值
 Reflect.get(target, propertyKey, receiver])
 ```
 
 这次我们知道了，第三个参数 receiver 具有强制修改 this 指向的能力，接下来我们来看一个场景
 
-```javascript
+```js
 let data = {
   name: '张三',
   age: '12岁',
@@ -343,7 +343,7 @@ console.log(dataProxy.getUsrInfo)
 
 打印情况如下
 
-```javascript
+```js
 属性被读取
 张三12岁
 ```
@@ -353,7 +353,7 @@ dataProxy.getUsrInfo 的 get 输出的值是正常的，但是 get 只被触发�
 为什么会出现这样的情况呢，这是因为调用 getUsrInfo 的时候，this 指向了 data，实际执行的是 data.getUsrInfo，此时的 this 指向 data，而不是 dataProxy，此时 get 自然是监听不到 name、age 的 get 了
 这时候我们就用到了 Reflect 的第三个参数，来重置 get set 的 this 指向
 
-```javascript
+```js
 let dataProxy = new Proxy(data, {
   get(target, key, receiver) {
     console.log('属性被读取')
@@ -365,7 +365,7 @@ let dataProxy = new Proxy(data, {
 
 打印情况如下
 
-```javascript
+```js
 属性被读取
 属性被读取
 属性被读取
@@ -398,7 +398,7 @@ WeakMap 是 JavaScript 中的一种特殊的映射数据结构，它是 ES6（EC
 
 ### 实践
 
-```javascript
+```js
 // Map
 let obj = {
   name: '张三'
@@ -407,7 +407,9 @@ let map = new Map()
 map.set(obj, 'name')
 obj = null // obj的引用类型被垃圾回收
 console.log(map) // map中key obj依旧存在
+```
 
+```js
 // WeakMap
 let obj = {
   name: '张三'
@@ -416,7 +418,6 @@ let map = new WeakMap()
 map.set(obj, 'name')
 obj = null // obj的引用类型被垃圾回收
 console.log(map) // weakMap中key为obj的键值对已经不存在
-console.log(dataProxy.getUsrInfo)
 ```
 
 通过以上案例我们可以了解到
