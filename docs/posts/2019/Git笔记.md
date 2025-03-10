@@ -549,3 +549,9 @@ $ git push origin :refs/tags/<tagname>
    last = log -1
    reset = reset --hard
 ```
+
+### 悬空提交
+
+```bash
+git log --graph --decorate --pretty=oneline --abbrev-commit --all $(git fsck --no-reflogs | grep commit | cut -d' ' -f3)
+```
