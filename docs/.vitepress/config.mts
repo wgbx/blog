@@ -7,6 +7,7 @@ export default defineConfig({
   description: 'Home of 微光北下',
   themeConfig: {
     // logo: '/horse.svg',
+    // @ts-ignore
     posts: await getPosts(),
     avator: '/blog/avator.png',
     pageSize: 5,
