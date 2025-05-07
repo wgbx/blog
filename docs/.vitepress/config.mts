@@ -9,7 +9,7 @@ export default defineConfig({
     // logo: '/horse.svg',
     // @ts-ignore
     posts: await getPosts(),
-    avator: '/blog/avator.png',
+    profile: '/blog/profile.png',
     pageSize: 5,
     postLength: await getPostLength(),
     search: {

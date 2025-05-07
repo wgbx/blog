@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <img :src="theme.avator" width="135" height="135" class="avator" />
+    <img :src="theme.profile" width="135" height="135" class="profile" />
   </div>
 </template>
 
@@ -16,13 +16,13 @@ const { theme } = useData()
   justify-content: center;
   height: 300px;
 }
-.avator {
+.profile {
   border-radius: 50%;
   cursor: pointer;
-  border: 5px solid var(--vp-avator-border);
+  border: 5px solid var(--vp-profile-border);
 }
 
-@keyframes avator-transform {
+@keyframes profile-transform {
   from {
     transform: rotate(0);
   }
@@ -30,7 +30,7 @@ const { theme } = useData()
     transform: rotate(360deg);
   }
 }
-.avator:hover {
-  animation: 5s linear 0s infinite avator-transform;
+.profile:hover {
+  animation: 5s linear 0s infinite profile-transform;
 }
 </style>
