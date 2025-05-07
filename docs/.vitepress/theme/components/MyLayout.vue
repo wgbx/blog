@@ -8,7 +8,6 @@
       <div>
         <button @click="back">返回上一页</button>
       </div>
-      <!-- <Comments /> -->
     </template>
     <template #home-hero-before><HomeHero /> </template>
     <template #home-features-after> <Page /></template>
@@ -20,7 +19,6 @@
 import DefaultTheme from 'vitepress/theme'
 import HomeHero from './HomeHero.vue'
 import CopyWright from './CopyWright.vue'
-import Comments from './Comments.vue'
 import Page from './Page.vue'
 import Category from './Category.vue'
 import Title from './Title.vue'
